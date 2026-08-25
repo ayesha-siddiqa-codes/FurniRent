@@ -481,36 +481,6 @@ Role-based authorization ensures that administrative operations are only availab
 
 ---
 
-## 🖥️ Screenshots
-
-Screenshots can be added here to demonstrate the application interface.
-
-### Home Page
-
-*Add screenshot here*
-
-### Furniture Listing
-
-*Add screenshot here*
-
-### Login / Registration
-
-*Add screenshot here*
-
-### Rental Page
-
-*Add screenshot here*
-
-### My Rentals
-
-*Add screenshot here*
-
-### Admin Dashboard
-
-*Add screenshot here*
-
----
-
 ## 🚀 Future Enhancements
 
 The following features can be added in future versions:
