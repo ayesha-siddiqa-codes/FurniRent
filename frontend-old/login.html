@@ -1,0 +1,1333 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | FurniRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ================= LOGIN PAGE ================= */
+
+        .login-page {
+
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 70px 5%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7f5f0,
+                    #ffffff
+                );
+
+        }
+
+
+        .login-wrapper {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr 1.1fr;
+
+            background: #ffffff;
+
+            border: 1px solid #e8e4dc;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        /* ================= LEFT SIDE ================= */
+
+        .login-intro {
+
+            padding: 55px;
+
+            background: #222;
+
+            color: #ffffff;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .login-intro-label {
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: 700;
+
+            opacity: 0.6;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .login-intro h1 {
+
+            font-size: clamp(38px, 5vw, 58px);
+
+            line-height: 1.05;
+
+            margin: 0 0 20px;
+
+        }
+
+
+        .login-intro p {
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            opacity: 0.7;
+
+            max-width: 390px;
+
+        }
+
+
+        .login-intro-brand {
+
+            margin-top: 45px;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            opacity: 0.5;
+
+        }
+
+
+        /* ================= RIGHT SIDE ================= */
+
+        .login-panel {
+
+            padding: 55px;
+
+        }
+
+
+        .login-panel-header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .login-panel-header p {
+
+            margin: 0 0 8px;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            opacity: 0.5;
+
+        }
+
+
+        .login-panel-header h2 {
+
+            margin: 0;
+
+            font-size: 30px;
+
+        }
+
+
+        .login-panel-header span {
+
+            display: block;
+
+            margin-top: 8px;
+
+            font-size: 14px;
+
+            opacity: 0.6;
+
+        }
+
+
+        /* ================= ROLE SELECTION ================= */
+
+        .role-selection {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .role-card {
+
+            border: 1px solid #e5e1d9;
+
+            background: #faf9f6;
+
+            border-radius: 15px;
+
+            padding: 22px 18px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+
+            text-align: left;
+
+        }
+
+
+        .role-card:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #222;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .role-card.active {
+
+            border-color: #222;
+
+            background: #222;
+
+            color: #ffffff;
+
+            box-shadow:
+                0 12px 30px
+                rgba(0, 0, 0, 0.12);
+
+        }
+
+
+        .role-icon {
+
+            font-size: 26px;
+
+            display: block;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .role-card strong {
+
+            display: block;
+
+            font-size: 15px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .role-card span {
+
+            display: block;
+
+            font-size: 11px;
+
+            opacity: 0.55;
+
+        }
+
+
+        .role-card.active span {
+
+            opacity: 0.7;
+
+        }
+
+
+        /* ================= FORM ================= */
+
+        .login-form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .form-group label {
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px 15px;
+
+            border: 1px solid #ddd8cf;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #222;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(34, 34, 34, 0.07);
+
+        }
+
+
+        .login-button {
+
+            margin-top: 5px;
+
+            border: none;
+
+            background: #222;
+
+            color: #ffffff;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+
+        }
+
+
+        .login-button:hover {
+
+            background: #000;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .login-button:disabled {
+
+            opacity: 0.5;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .login-message {
+
+            min-height: 20px;
+
+            margin: 5px 0 0;
+
+            font-size: 13px;
+
+            text-align: center;
+
+        }
+
+
+        .login-message.error {
+
+            color: #b33a3a;
+
+        }
+
+
+        .login-message.success {
+
+            color: #24733a;
+
+        }
+
+
+        /* ================= REGISTER ================= */
+
+        .register-link {
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            opacity: 0.65;
+
+        }
+
+
+        .register-link a {
+
+            color: #222;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+        }
+
+
+        .register-link a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .login-wrapper {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .login-intro {
+
+                padding: 40px;
+
+            }
+
+
+            .login-intro-brand {
+
+                margin-top: 25px;
+
+            }
+
+
+            .login-panel {
+
+                padding: 40px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .login-page {
+
+                padding: 35px 5%;
+
+            }
+
+
+            .login-intro,
+
+            .login-panel {
+
+                padding: 30px 25px;
+
+            }
+
+
+            .role-selection {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        FurniRent
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+
+            Home
+
+        </a>
+
+
+        <a href="index.html#furniture">
+
+            Furniture
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= LOGIN ================= -->
+
+<main class="login-page">
+
+
+    <div class="login-wrapper">
+
+
+        <!-- ================= INTRO ================= -->
+
+        <section class="login-intro">
+
+            <p class="login-intro-label">
+
+                WELCOME BACK
+
+            </p>
+
+
+            <h1>
+
+                Make your space<br>
+
+                feel like home.
+
+            </h1>
+
+
+            <p>
+
+                Sign in to FurniRent and manage
+
+                your furniture rentals with ease.
+
+            </p>
+
+
+            <div class="login-intro-brand">
+
+                FURNIRENT
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LOGIN PANEL ================= -->
+
+        <section class="login-panel">
+
+
+            <div class="login-panel-header">
+
+                <p>
+
+                    SECURE LOGIN
+
+                </p>
+
+
+                <h2>
+
+                    Choose your account
+
+                </h2>
+
+
+                <span>
+
+                    Select how you want to continue.
+
+                </span>
+
+            </div>
+
+
+
+            <!-- ================= ROLE SELECTION ================= -->
+
+            <div class="role-selection">
+
+
+                <div
+
+                    class="role-card active"
+
+                    id="customerRole"
+
+                    onclick="selectRole('user')"
+
+                >
+
+                    <span class="role-icon">
+
+                        👤
+
+                    </span>
+
+
+                    <strong>
+
+                        Customer
+
+                    </strong>
+
+
+                    <span>
+
+                        Browse & rent furniture
+
+                    </span>
+
+                </div>
+
+
+
+                <div
+
+                    class="role-card"
+
+                    id="adminRole"
+
+                    onclick="selectRole('admin')"
+
+                >
+
+                    <span class="role-icon">
+
+                        🛡️
+
+                    </span>
+
+
+                    <strong>
+
+                        Admin
+
+                    </strong>
+
+
+                    <span>
+
+                        Manage FurniRent
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================= FORM ================= -->
+
+            <form
+
+                id="loginForm"
+
+                class="login-form"
+
+            >
+
+
+                <div class="form-group">
+
+                    <label for="email">
+
+                        Email Address
+
+                    </label>
+
+
+                    <input
+
+                        type="email"
+
+                        id="email"
+
+                        placeholder="Enter your email"
+
+                        required
+
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+
+                    <input
+
+                        type="password"
+
+                        id="password"
+
+                        placeholder="Enter your password"
+
+                        required
+
+                    >
+
+                </div>
+
+
+
+                <button
+
+                    type="submit"
+
+                    class="login-button"
+
+                    id="loginButton"
+
+                >
+
+                    Login as Customer
+
+                </button>
+
+
+                <p
+
+                    id="loginMessage"
+
+                    class="login-message"
+
+                ></p>
+
+
+            </form>
+
+
+
+            <div class="register-link">
+
+                Don't have a customer account?
+
+                <a href="register.html">
+
+                    Create one
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+
+        FurniRent
+
+    </div>
+
+
+    <p>
+
+        Beautiful furniture. Flexible living.
+
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="index.html">
+
+            Home
+
+        </a>
+
+
+        <a href="index.html#furniture">
+
+            Furniture
+
+        </a>
+
+    </div>
+
+
+    <p class="copyright">
+
+        © 2026 FurniRent. All rights reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+let selectedRole = "user";
+
+
+const customerRole =
+
+    document.getElementById(
+
+        "customerRole"
+
+    );
+
+
+const adminRole =
+
+    document.getElementById(
+
+        "adminRole"
+
+    );
+
+
+const loginButton =
+
+    document.getElementById(
+
+        "loginButton"
+
+    );
+
+
+const loginForm =
+
+    document.getElementById(
+
+        "loginForm"
+
+    );
+
+
+const loginMessage =
+
+    document.getElementById(
+
+        "loginMessage"
+
+    );
+
+
+
+/*
+
+ * SELECT ROLE
+
+ */
+
+function selectRole(role) {
+
+
+    selectedRole = role;
+
+
+    customerRole.classList.remove(
+
+        "active"
+
+    );
+
+
+    adminRole.classList.remove(
+
+        "active"
+
+    );
+
+
+    if (role === "admin") {
+
+
+        adminRole.classList.add(
+
+            "active"
+
+        );
+
+
+        loginButton.textContent =
+
+            "Login as Admin";
+
+
+    } else {
+
+
+        customerRole.classList.add(
+
+            "active"
+
+        );
+
+
+        loginButton.textContent =
+
+            "Login as Customer";
+
+    }
+
+
+    loginMessage.textContent = "";
+
+    loginMessage.className =
+
+        "login-message";
+
+}
+
+
+
+/*
+
+ * LOGIN
+
+ */
+
+loginForm.addEventListener(
+
+    "submit",
+
+    async function(event) {
+
+
+        event.preventDefault();
+
+
+        loginMessage.textContent =
+
+            "Logging in...";
+
+
+        loginMessage.className =
+
+            "login-message";
+
+
+        loginButton.disabled = true;
+
+
+        const email =
+
+            document.getElementById(
+
+                "email"
+
+            ).value.trim();
+
+
+        const password =
+
+            document.getElementById(
+
+                "password"
+
+            ).value;
+
+
+        try {
+
+
+            const response =
+
+                await fetch(
+
+                    "http://localhost:5000/api/auth/login",
+
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+
+                                "application/json"
+
+                        },
+
+                        body: JSON.stringify({
+
+                            email,
+
+                            password
+
+                        })
+
+                    }
+
+                );
+
+
+            const data =
+
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+
+                    data.message ||
+
+                    "Login failed."
+
+                );
+
+            }
+
+
+            /*
+
+             * Get role returned by backend
+
+             */
+
+            const user =
+
+                data.user || data;
+
+
+            const actualRole =
+
+                String(
+
+                    user.role || ""
+
+                ).toLowerCase();
+
+
+
+            /*
+
+             * CUSTOMER LOGIN
+
+             */
+
+            if (
+
+                selectedRole === "user"
+
+            ) {
+
+
+                if (
+
+                    actualRole === "admin"
+
+                ) {
+
+                    throw new Error(
+
+                        "This is an admin account. Please select Admin Login."
+
+                    );
+
+                }
+
+
+                localStorage.setItem(
+
+                    "token",
+
+                    data.token
+
+                );
+
+
+                localStorage.setItem(
+
+                    "user",
+
+                    JSON.stringify(user)
+
+                );
+
+
+                localStorage.removeItem(
+
+                    "adminLoggedIn"
+
+                );
+
+
+                loginMessage.textContent =
+
+                    "Customer login successful!";
+
+
+                loginMessage.className =
+
+                    "login-message success";
+
+
+                setTimeout(
+
+                    function() {
+
+                        window.location.href =
+
+                            "index.html";
+
+                    },
+
+                    700
+
+                );
+
+
+            }
+
+
+
+            /*
+
+             * ADMIN LOGIN
+
+             */
+
+            else {
+
+
+                if (
+
+                    actualRole !== "admin"
+
+                ) {
+
+                    throw new Error(
+
+                        "This account does not have admin access."
+
+                    );
+
+                }
+
+
+                localStorage.setItem(
+
+                    "token",
+
+                    data.token
+
+                );
+
+
+                localStorage.setItem(
+
+                    "user",
+
+                    JSON.stringify(user)
+
+                );
+
+
+                localStorage.setItem(
+
+                    "adminLoggedIn",
+
+                    "true"
+
+                );
+
+
+                loginMessage.textContent =
+
+                    "Admin login successful!";
+
+
+                loginMessage.className =
+
+                    "login-message success";
+
+
+                setTimeout(
+
+                    function() {
+
+                        window.location.href =
+
+                            "admin.html";
+
+                    },
+
+                    700
+
+                );
+
+            }
+
+
+        }
+
+        catch (error) {
+
+
+            console.error(
+
+                "Login error:",
+
+                error
+
+            );
+
+
+            loginMessage.textContent =
+
+                error.message;
+
+
+            loginMessage.className =
+
+                "login-message error";
+
+
+            loginButton.disabled = false;
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
+```

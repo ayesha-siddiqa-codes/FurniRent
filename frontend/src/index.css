@@ -1,0 +1,3541 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f6f2;
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+a {
+    transition: all 0.3s ease;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+
+:root {
+    --primary: #1f1f1f;
+    --primary-hover: #444;
+    --background: #f8f6f2;
+    --surface: #ffffff;
+    --soft-background: #eee9e1;
+    --border: #e5e5e5;
+    --text: #1f1f1f;
+    --muted: #777;
+    --light-muted: #999;
+    --success: #356b40;
+    --danger: #8a3d3d;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    height: 80px;
+    padding: 0 4.5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #171717;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar nav a {
+    position: relative;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #555;
+
+    padding: 8px 0;
+}
+
+.navbar nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 1.5px;
+
+    background: #171717;
+
+    transition: width 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #111;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   OLD HERO
+========================================================= */
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 90px 7%;
+
+    background-image: url("/images/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.84) 0%,
+            rgba(0, 0, 0, 0.62) 45%,
+            rgba(0, 0, 0, 0.28) 100%
+        );
+
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 900px;
+
+    text-align: left;
+}
+
+.hero-small-title {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 10px 17px;
+    margin-bottom: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(6px);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.hero h1 {
+    max-width: 900px;
+
+    margin-bottom: 28px;
+
+    font-size: clamp(58px, 7vw, 96px);
+
+    line-height: 0.96;
+
+    letter-spacing: -5px;
+
+    color: #ffffff;
+}
+
+.hero h1 span {
+    display: block;
+
+    font-style: italic;
+    font-weight: 400;
+
+    letter-spacing: -4px;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin: 0 0 16px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-content > p:nth-of-type(2) {
+    max-width: 650px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 14px;
+
+    margin-top: 32px;
+
+    flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 54px;
+
+    padding: 0 28px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.primary-button {
+    background: #ffffff;
+    color: #171717;
+    border: 1px solid #ffffff;
+}
+
+.primary-button:hover {
+    background: #eeeeee;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-button {
+    background: transparent;
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.secondary-button:hover {
+    background: #ffffff;
+
+    color: #171717;
+
+    transform: translateY(-2px);
+}
+
+.hero-stats {
+    display: flex;
+
+    align-items: stretch;
+
+    margin-top: 68px;
+
+    max-width: 650px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.hero-stat {
+    flex: 1;
+
+    padding: 25px 28px 0 0;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.hero-stat:not(:first-child) {
+    padding-left: 28px;
+}
+
+.hero-stat:last-child {
+    border-right: none;
+}
+
+.hero-stat strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.hero-stat span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+}
+
+.section-heading > p {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+
+    letter-spacing: -1px;
+}
+
+.section-heading > span {
+    color: #777;
+}
+
+
+/* =========================================================
+   FURNITURE SECTION
+========================================================= */
+
+.furniture-section {
+    padding: 110px 7%;
+
+    background: #ffffff;
+}
+
+.furniture-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 28px;
+}
+
+.furniture-card {
+    background: #f8f6f2;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.furniture-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.furniture-image {
+    height: 310px;
+
+    overflow: hidden;
+
+    background: #e8e4dd;
+}
+
+.furniture-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.6s ease;
+}
+
+.furniture-card:hover .furniture-image img {
+    transform: scale(1.06);
+}
+
+.furniture-info {
+    padding: 26px;
+}
+
+.category {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #888;
+
+    margin-bottom: 8px;
+}
+
+.furniture-info h3 {
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 14px;
+
+    color: #777;
+
+    min-height: 50px;
+}
+
+.card-bottom {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #ddd;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.price strong {
+    font-size: 20px;
+}
+
+.price span {
+    font-size: 12px;
+
+    color: #777;
+}
+
+.card-bottom button {
+    border: none;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    padding: 12px 19px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.card-bottom button:hover {
+    background: #444;
+
+    transform: translateY(-2px);
+}
+
+.loading,
+.empty-message,
+.error-message {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 40px;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-section {
+    padding: 110px 7%;
+
+    background: #eee9e1;
+}
+
+.features {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 38px;
+
+    background: #ffffff;
+
+    border-radius: 6px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    font-size: 13px;
+
+    color: #888;
+
+    margin-bottom: 35px;
+}
+
+.feature-card h3 {
+    font-size: 23px;
+
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.how-it-works {
+    padding: 110px 7%;
+
+    background: #ffffff;
+}
+
+.steps {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 50px;
+}
+
+.step {
+    border-top: 1px solid #ccc;
+
+    padding-top: 25px;
+}
+
+.step span {
+    font-size: 13px;
+
+    color: #888;
+}
+
+.step h3 {
+    font-size: 28px;
+
+    margin: 18px 0 10px;
+}
+
+.step p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+    padding: 110px 7%;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    text-align: center;
+}
+
+.cta p {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #aaa;
+
+    margin-bottom: 15px;
+}
+
+.cta h2 {
+    font-size: 48px;
+
+    margin-bottom: 30px;
+
+    letter-spacing: -1px;
+}
+
+.cta a {
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    background: white;
+
+    color: #1f1f1f;
+
+    border-radius: 4px;
+
+    font-weight: 600;
+}
+
+.cta a:hover {
+    background: #ddd;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 55px 7%;
+
+    background: #151515;
+
+    color: white;
+
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+footer > p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   AUTH PAGES
+========================================================= */
+
+.auth-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(
+            rgba(20, 20, 20, 0.55),
+            rgba(20, 20, 20, 0.55)
+        ),
+        url("/images/hero-bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+.auth-card {
+    width: 100%;
+
+    max-width: 480px;
+
+    padding: 50px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.auth-logo {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+
+    color: #171717;
+
+    margin-bottom: 35px;
+}
+
+.auth-label {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 12px;
+}
+
+.auth-card h1 {
+    font-size: 42px;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 15px;
+
+    color: #171717;
+}
+
+.auth-description {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #777;
+
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #333;
+
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    background: #fafafa;
+
+    color: #222;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #333;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.auth-button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+.auth-message {
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+.auth-switch {
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+.auth-switch a {
+    color: #171717;
+
+    font-weight: 600;
+
+    text-decoration: underline;
+}
+
+.back-home {
+    display: block;
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #888;
+}
+
+.back-home:hover {
+    color: #171717;
+}
+
+
+/* =========================================================
+   RENT FURNITURE PAGE
+========================================================= */
+
+.rent-page {
+    min-height: calc(100vh - 82px);
+
+    padding: 80px 7%;
+
+    background: #f8f6f2;
+}
+
+.rent-container {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+}
+
+.rent-preview {
+    background: white;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.rent-image {
+    height: 430px;
+
+    overflow: hidden;
+}
+
+.rent-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.rent-preview-info {
+    padding: 30px;
+}
+
+.rent-preview-info h1 {
+    font-size: 36px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 15px;
+}
+
+.rent-preview-info .description {
+    min-height: auto;
+
+    margin-bottom: 25px;
+}
+
+.rent-price strong {
+    font-size: 28px;
+}
+
+.rent-price span {
+    color: #777;
+
+    font-size: 13px;
+}
+
+.rent-form-section {
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.rent-label {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 10px;
+}
+
+.rent-form-section h2 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+}
+
+.rent-subtitle {
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 35px;
+}
+
+.date-group {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.rent-form-section .form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.rent-form-section .form-group label {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+.rent-form-section .form-group input {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    background: #fafafa;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.rent-form-section .form-group input:focus {
+    border-color: #777;
+
+    background: white;
+}
+
+.total-box {
+    margin-top: 30px;
+
+    padding: 20px;
+
+    background: #f8f6f2;
+
+    border-radius: 5px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.total-box span {
+    display: block;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #888;
+
+    margin-bottom: 5px;
+}
+
+.total-box strong {
+    font-size: 20px;
+}
+
+.rent-submit-button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.rent-submit-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+.rental-message {
+    text-align: center;
+
+    margin-top: 15px;
+
+    min-height: 20px;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+.rental-message.success {
+    color: #2d6a4f;
+
+    font-weight: 600;
+}
+
+.rental-message.error {
+    color: #b23a48;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MY RENTALS PAGE
+========================================================= */
+
+.rentals-page {
+    min-height: calc(100vh - 82px);
+
+    padding: 90px 7%;
+
+    background: #f8f6f2;
+}
+
+.rentals-heading {
+    max-width: 750px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+.rentals-heading p {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 12px;
+}
+
+.rentals-heading h1 {
+    font-size: 54px;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+}
+
+.rentals-heading span {
+    color: #777;
+
+    font-size: 15px;
+}
+
+.rentals-grid {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 28px;
+}
+
+.rental-card {
+    display: grid;
+
+    grid-template-columns: 210px 1fr;
+
+    background: #ffffff;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rental-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.11);
+}
+
+.rental-image {
+    height: 100%;
+
+    min-height: 300px;
+
+    overflow: hidden;
+
+    background: #e8e4dd;
+}
+
+.rental-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.rental-card:hover .rental-image img {
+    transform: scale(1.05);
+}
+
+.rental-info {
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.rental-category {
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #888;
+
+    margin-bottom: 8px;
+}
+
+.rental-info h2 {
+    font-size: 27px;
+
+    letter-spacing: -0.7px;
+
+    margin-bottom: 25px;
+}
+
+.rental-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    padding: 18px 0;
+
+    border-top: 1px solid #eee;
+
+    border-bottom: 1px solid #eee;
+}
+
+.rental-details span,
+.rental-bottom span {
+    display: block;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #999;
+
+    margin-bottom: 5px;
+}
+
+.rental-details strong {
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.rental-bottom {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 15px;
+}
+
+.rental-bottom strong {
+    font-size: 21px;
+}
+
+.rental-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 10px;
+}
+
+.rental-status {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background: #eee9e1;
+
+    color: #555 !important;
+
+    font-size: 9px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.rental-status.status-pending {
+    background: #f4ead2;
+
+    color: #8a6818 !important;
+}
+
+.rental-status.status-approved {
+    background: #dfeee2;
+
+    color: #356b40 !important;
+}
+
+.rental-status.status-completed {
+    background: #e2e8f0;
+
+    color: #465568 !important;
+}
+
+.rental-status.status-cancelled {
+    background: #f3dddd;
+
+    color: #8a3d3d !important;
+}
+
+.cancel-rental-button {
+    border: 1px solid #ddd;
+
+    background: white;
+
+    color: #777;
+
+    padding: 8px 12px;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.cancel-rental-button:hover {
+    background: #1f1f1f;
+
+    color: white;
+
+    border-color: #1f1f1f;
+}
+
+.rentals-loading,
+.rentals-error,
+.no-rentals {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    background: white;
+
+    padding: 70px 30px;
+
+    border-radius: 6px;
+}
+
+.rentals-loading {
+    color: #777;
+}
+
+.rentals-error h3,
+.no-rentals h2 {
+    margin-bottom: 10px;
+}
+
+.rentals-error p,
+.no-rentals p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+.browse-button {
+    display: inline-block;
+
+    padding: 13px 23px;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.browse-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+.admin-page {
+    min-height: calc(100vh - 82px);
+
+    padding: 85px 7%;
+
+    background: #f8f6f2;
+}
+
+.admin-header {
+    max-width: 1100px;
+
+    margin: 0 auto 55px;
+}
+
+.admin-label {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 12px;
+}
+
+.admin-header h1 {
+    font-size: 54px;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+}
+
+.admin-description {
+    color: #777;
+
+    font-size: 15px;
+
+    max-width: 600px;
+}
+
+.admin-stats {
+    max-width: 1100px;
+
+    margin: 0 auto 70px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.admin-stat-card {
+    background: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.admin-stat-card span {
+    display: block;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #888;
+
+    margin-bottom: 15px;
+}
+
+.admin-stat-card strong {
+    display: block;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    color: #1f1f1f;
+
+    margin-bottom: 8px;
+}
+
+.admin-stat-card small {
+    color: #999;
+
+    font-size: 12px;
+}
+
+.admin-section-heading {
+    max-width: 1100px;
+
+    margin: 0 auto 35px;
+}
+
+.admin-section-heading p {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 10px;
+}
+
+.admin-section-heading h2 {
+    font-size: 40px;
+
+    line-height: 1.1;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 10px;
+}
+
+.admin-section-heading span {
+    color: #777;
+
+    font-size: 14px;
+}
+
+.admin-form-section {
+    max-width: 1100px;
+
+    margin: 0 auto 90px;
+
+    padding: 45px;
+
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.admin-form-section .admin-section-heading {
+    margin-bottom: 35px;
+}
+
+.admin-form {
+    width: 100%;
+}
+
+.admin-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.admin-form-group {
+    margin-bottom: 20px;
+}
+
+.admin-form-group label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #777;
+
+    margin-bottom: 8px;
+}
+
+.admin-form-group input,
+.admin-form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    background: #fafafa;
+
+    color: #222;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.admin-form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus {
+    border-color: #555;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-form-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding-top: 5px;
+}
+
+.availability-checkbox {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 13px;
+
+    color: #555;
+
+    cursor: pointer;
+}
+
+.availability-checkbox input {
+    width: 16px;
+
+    height: 16px;
+
+    accent-color: #1f1f1f;
+}
+
+.admin-form-buttons {
+    display: flex;
+
+    gap: 10px;
+}
+
+.admin-primary-button,
+.admin-secondary-button {
+    padding: 13px 22px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.admin-primary-button {
+    border: 1px solid #1f1f1f;
+
+    background: #1f1f1f;
+
+    color: #ffffff;
+}
+
+.admin-primary-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+.admin-secondary-button {
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #555;
+}
+
+.admin-secondary-button:hover {
+    background: #f5f5f5;
+}
+
+.admin-content-section {
+    max-width: 1100px;
+
+    margin: 0 auto 100px;
+}
+
+.admin-furniture-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.admin-furniture-card {
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.admin-furniture-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.admin-furniture-image {
+    height: 250px;
+
+    background: #e8e4dd;
+
+    overflow: hidden;
+}
+
+.admin-furniture-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.admin-furniture-card:hover .admin-furniture-image img {
+    transform: scale(1.05);
+}
+
+.admin-furniture-info {
+    padding: 25px;
+}
+
+.admin-category {
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #888;
+
+    margin-bottom: 8px;
+}
+
+.admin-furniture-info h3 {
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 10px;
+}
+
+.admin-item-description {
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    min-height: 42px;
+}
+
+.admin-card-bottom {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eee;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.admin-card-bottom span:first-child {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #999;
+
+    margin-bottom: 4px;
+}
+
+.admin-card-bottom strong {
+    font-size: 20px;
+}
+
+.admin-availability {
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+.admin-availability.available {
+    background: #dfeee2;
+
+    color: #356b40;
+}
+
+.admin-availability.unavailable {
+    background: #f3dddd;
+
+    color: #8a3d3d;
+}
+
+.admin-card-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.edit-button,
+.delete-button {
+    flex: 1;
+
+    padding: 11px;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.edit-button {
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #333;
+}
+
+.edit-button:hover {
+    background: #f1eee9;
+
+    border-color: #ccc;
+}
+
+.delete-button {
+    border: 1px solid #1f1f1f;
+
+    background: #1f1f1f;
+
+    color: #ffffff;
+}
+
+.delete-button:hover {
+    background: #8a3d3d;
+
+    border-color: #8a3d3d;
+}
+
+.admin-orders-section {
+    max-width: 1100px;
+
+    margin: 0 auto 80px;
+}
+
+.admin-orders-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.admin-order-card {
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.admin-order-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.09);
+}
+
+.admin-order-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.admin-order-top h3 {
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    margin-top: 5px;
+}
+
+.admin-order-status {
+    display: inline-block;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.admin-order-status.status-pending {
+    background: #f4ead2;
+
+    color: #8a6818;
+}
+
+.admin-order-status.status-approved {
+    background: #dfeee2;
+
+    color: #356b40;
+}
+
+.admin-order-status.status-completed {
+    background: #e2e8f0;
+
+    color: #465568;
+}
+
+.admin-order-status.status-cancelled {
+    background: #f3dddd;
+
+    color: #8a3d3d;
+}
+
+.admin-order-details {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.admin-order-details span,
+.admin-order-bottom span {
+    display: block;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #999;
+
+    margin-bottom: 5px;
+}
+
+.admin-order-details strong {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+.admin-order-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 20px;
+
+    padding-top: 20px;
+}
+
+.admin-order-bottom > div:first-child strong {
+    font-size: 21px;
+}
+
+.admin-order-actions {
+    display: flex;
+
+    gap: 8px;
+}
+
+.rental-order-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 28px 0 30px;
+  padding: 6px;
+  width: fit-content;
+  max-width: 100%;
+  background: #f5f5f3;
+  border: 1px solid #e5e5e1;
+  border-radius: 14px;
+}
+
+.rental-order-filters button {
+  border: none;
+  background: transparent;
+  color: #555;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.rental-order-filters button:hover {
+  background: #e9e9e5;
+  color: #222;
+}
+
+.rental-order-filters button.active {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.rental-order-filters button.active:hover {
+  background: #111;
+}
+.approve-button,
+.cancel-button {
+    padding: 9px 13px;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.approve-button {
+    border: 1px solid #1f1f1f;
+
+    background: #1f1f1f;
+
+    color: #ffffff;
+}
+
+.approve-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    border: 1px solid #ddd;
+
+    background: #ffffff;
+
+    color: #777;
+}
+
+.cancel-button:hover {
+    background: #8a3d3d;
+
+    border-color: #8a3d3d;
+
+    color: #ffffff;
+}
+
+.admin-empty {
+    padding: 60px 30px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.admin-empty h3 {
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+.admin-empty p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+.admin-loading-page,
+.admin-error-page {
+    min-height: calc(100vh - 82px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px;
+
+    background: #f8f6f2;
+
+    text-align: center;
+}
+
+.admin-loading-page p {
+    color: #777;
+
+    font-size: 15px;
+}
+
+.admin-error-page h2 {
+    margin-bottom: 10px;
+}
+
+.admin-error-page p {
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+.admin-error-page button {
+    padding: 12px 22px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #1f1f1f;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   NEW HOME PAGE
+========================================================= */
+
+.home-page {
+    min-height: calc(100vh - 80px);
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.home-hero {
+    min-height: calc(100vh - 80px);
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 70px 4.5%;
+
+    background-image: url("/images/hero-bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HOME HERO OVERLAY
+========================================================= */
+
+.home-hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.68) 38%,
+            rgba(0, 0, 0, 0.45) 72%,
+            rgba(0, 0, 0, 0.35) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   HOME HERO CONTENT
+========================================================= */
+
+.home-hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HOME LABEL
+========================================================= */
+
+.home-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 11px 20px;
+
+    margin-bottom: 35px;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(8px);
+
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HOME HEADING
+========================================================= */
+
+.home-hero h1 {
+    max-width: 950px;
+
+    margin-bottom: 35px;
+
+    color: #ffffff;
+
+    font-size: clamp(62px, 7.5vw, 105px);
+
+    font-weight: 700;
+
+    line-height: 0.92;
+
+    letter-spacing: -5px;
+}
+
+.home-hero h1 em {
+    display: block;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    letter-spacing: -5px;
+}
+
+
+/* =========================================================
+   HOME DESCRIPTION
+========================================================= */
+
+.home-description {
+    max-width: 670px;
+
+    margin-bottom: 12px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+.home-hero-content > p:nth-of-type(2) {
+    max-width: 670px;
+
+    margin-bottom: 35px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   HOME BUTTONS
+========================================================= */
+
+.home-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.home-buttons a {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 58px;
+
+    padding: 0 30px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.home-primary-button {
+    background: #ffffff;
+
+    color: #171717;
+
+    border: 1px solid #ffffff;
+}
+
+.home-primary-button::after {
+    content: "→";
+
+    margin-left: 20px;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    transition: transform 0.3s ease;
+}
+
+.home-primary-button:hover {
+    background: #eeeeee;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.home-primary-button:hover::after {
+    transform: translateX(5px);
+}
+
+.home-secondary-button {
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.home-secondary-button:hover {
+    background: #ffffff;
+
+    color: #171717;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HOME STATS
+========================================================= */
+
+.home-stats {
+    display: flex;
+
+    align-items: stretch;
+
+    max-width: 680px;
+
+    margin-top: 70px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.home-stat {
+    flex: 1;
+
+    padding: 27px 30px 0 0;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.home-stat:not(:first-child) {
+    padding-left: 30px;
+}
+
+.home-stat:last-child {
+    border-right: none;
+}
+
+.home-stat strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    font-weight: 700;
+}
+
+.home-stat span {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HOME WHY CHOOSE US
+========================================================= */
+
+.home-features {
+    padding: 110px 4.5%;
+
+    background: #ffffff;
+}
+
+.home-features-inner {
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+.home-section-heading {
+    max-width: 750px;
+
+    margin-bottom: 55px;
+}
+
+.home-section-heading p {
+    margin-bottom: 12px;
+
+    color: #888;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.home-section-heading h2 {
+    color: #1f1f1f;
+
+    font-size: 48px;
+
+    line-height: 1.08;
+
+    letter-spacing: -2px;
+}
+
+.home-feature-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.home-feature-card {
+    padding: 35px;
+
+    background: #f8f6f2;
+
+    border: 1px solid #eee9e1;
+
+    border-radius: 6px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.home-feature-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.home-feature-number {
+    margin-bottom: 35px;
+
+    color: #999;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.home-feature-card h3 {
+    margin-bottom: 13px;
+
+    color: #1f1f1f;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+}
+
+.home-feature-card p {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   HOME CTA
+========================================================= */
+
+.home-cta {
+    margin: 0 4.5% 100px;
+
+    padding: 90px 7%;
+
+    background: #eee9e1;
+
+    text-align: center;
+}
+
+.home-cta .home-label {
+    margin-bottom: 20px;
+
+    color: #777;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    backdrop-filter: none;
+}
+
+.home-cta h2 {
+    max-width: 800px;
+
+    margin: 0 auto 18px;
+
+    color: #1f1f1f;
+
+    font-size: 50px;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+}
+
+.home-cta p {
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+.home-cta a {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px 28px;
+
+    background: #1f1f1f;
+
+    color: #ffffff;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.home-cta a:hover {
+    background: #444;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .furniture-grid,
+    .features,
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rentals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-card {
+        max-width: 800px;
+
+        width: 100%;
+
+        margin: 0 auto;
+    }
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-furniture-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-orders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-hero {
+        min-height: 650px;
+    }
+
+    .home-hero h1 {
+        font-size: 70px;
+    }
+
+    .home-features {
+        padding: 90px 5%;
+    }
+
+    .home-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-cta {
+        margin-left: 5%;
+
+        margin-right: 5%;
+    }
+}
+
+
+/* =========================================================
+   TABLET HERO
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .hero {
+        min-height: 700px;
+
+        padding: 70px 5%;
+
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 720px;
+    }
+
+    .hero h1 {
+        font-size: 62px;
+
+        letter-spacing: -3px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+    }
+
+    .hero-stats {
+        max-width: 600px;
+
+        margin-top: 50px;
+    }
+
+    .rent-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .rent-image {
+        height: 350px;
+    }
+}
+
+
+/* =========================================================
+   AUTH MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        padding: 20px;
+    }
+
+    .auth-card {
+        padding: 35px 25px;
+    }
+
+    .auth-card h1 {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   MAIN MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    /* Navbar */
+
+    .navbar {
+        height: auto;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .navbar nav {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    /* Old Hero */
+
+    .hero {
+        min-height: calc(100vh - 130px);
+
+        padding: 65px 20px;
+
+        background-position: center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.84),
+                rgba(0, 0, 0, 0.55)
+            );
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-small-title {
+        font-size: 10px;
+
+        letter-spacing: 1.8px;
+
+        padding: 8px 13px;
+
+        margin-bottom: 22px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+
+        letter-spacing: -2.5px;
+
+        line-height: 0.98;
+    }
+
+    .hero h1 span {
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+    .hero-content > p:nth-of-type(2) {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        width: 100%;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 220px;
+
+        min-height: 50px;
+    }
+
+    .hero-stats {
+        width: 100%;
+
+        margin-top: 50px;
+    }
+
+    .hero-stat {
+        padding: 20px 12px 0 0;
+    }
+
+    .hero-stat:not(:first-child) {
+        padding-left: 12px;
+    }
+
+    .hero-stat strong {
+        font-size: 22px;
+    }
+
+    .hero-stat span {
+        font-size: 9px;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    /* General sections */
+
+    .furniture-section,
+    .features-section,
+    .how-it-works {
+        padding: 75px 20px;
+    }
+
+    .furniture-grid,
+    .features,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .furniture-image {
+        height: 280px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+
+    /* CTA */
+
+    .cta {
+        padding: 80px 20px;
+    }
+
+    .cta h2 {
+        font-size: 36px;
+    }
+
+
+    /* Footer */
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+
+    /* My Rentals */
+
+    .rentals-page {
+        padding: 70px 20px;
+    }
+
+    .rentals-heading h1 {
+        font-size: 42px;
+    }
+
+    .rental-card {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-image {
+        height: 280px;
+
+        min-height: 280px;
+    }
+
+    .rental-info {
+        padding: 24px;
+    }
+
+    .rental-info h2 {
+        font-size: 24px;
+    }
+
+    .rental-details {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rental-actions {
+        align-items: flex-start;
+    }
+
+
+    /* Admin */
+
+    .admin-page {
+        padding: 65px 20px;
+    }
+
+    .admin-header {
+        margin-bottom: 40px;
+    }
+
+    .admin-header h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .admin-description {
+        font-size: 14px;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 55px;
+    }
+
+    .admin-stat-card {
+        padding: 25px;
+    }
+
+    .admin-form-section {
+        padding: 30px 20px;
+
+        margin-bottom: 70px;
+    }
+
+    .admin-section-heading h2 {
+        font-size: 32px;
+    }
+
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-form-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .admin-form-buttons {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    .admin-primary-button,
+    .admin-secondary-button {
+        width: 100%;
+    }
+
+    .admin-furniture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-orders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-order-card {
+        padding: 22px;
+    }
+
+    .admin-order-top {
+        flex-direction: column;
+    }
+
+    .admin-order-details {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-order-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .admin-order-actions {
+        width: 100%;
+    }
+
+    .approve-button,
+    .cancel-button {
+        flex: 1;
+    }
+
+
+    /* =====================================================
+       HOME MOBILE
+    ===================================================== */
+
+    .home-page {
+        min-height: calc(100vh - 130px);
+    }
+
+    .home-hero {
+        min-height: calc(100vh - 130px);
+
+        padding: 60px 20px;
+
+        align-items: center;
+
+        background-position: center;
+    }
+
+    .home-hero::before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.86),
+                rgba(0, 0, 0, 0.62)
+            );
+    }
+
+    .home-label {
+        font-size: 9px;
+
+        letter-spacing: 1.6px;
+
+        padding: 9px 14px;
+
+        margin-bottom: 25px;
+    }
+
+    .home-hero h1 {
+        font-size: 50px;
+
+        line-height: 0.96;
+
+        letter-spacing: -3px;
+
+        margin-bottom: 27px;
+    }
+
+    .home-hero h1 em {
+        letter-spacing: -3px;
+    }
+
+    .home-description {
+        font-size: 15px;
+
+        line-height: 1.65;
+
+        margin-bottom: 12px;
+    }
+
+    .home-hero-content > p:nth-of-type(2) {
+        font-size: 14px;
+
+        margin-bottom: 25px;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        width: 100%;
+
+        gap: 10px;
+    }
+
+    .home-buttons a {
+        width: 240px;
+
+        min-height: 52px;
+    }
+
+    .home-stats {
+        width: 100%;
+
+        margin-top: 48px;
+    }
+
+    .home-stat {
+        padding: 20px 12px 0 0;
+    }
+
+    .home-stat:not(:first-child) {
+        padding-left: 12px;
+    }
+
+    .home-stat strong {
+        font-size: 22px;
+    }
+
+    .home-stat span {
+        font-size: 8px;
+
+        letter-spacing: 0.6px;
+    }
+
+    .home-features {
+        padding: 75px 20px;
+    }
+
+    .home-section-heading {
+        margin-bottom: 40px;
+    }
+
+    .home-section-heading h2 {
+        font-size: 35px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .home-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-feature-card {
+        padding: 28px;
+    }
+
+    .home-cta {
+        margin: 0 20px 70px;
+
+        padding: 60px 25px;
+    }
+
+    .home-cta h2 {
+        font-size: 35px;
+
+        letter-spacing: -1.5px;
+    }
+}
+
+
+/* =========================================================
+   RENT PAGE SMALL MOBILE
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .rent-form-section {
+        padding: 30px 20px;
+    }
+
+    .rent-preview-info h1 {
+        font-size: 30px;
+    }
+
+    .rent-form-section h2 {
+        font-size: 30px;
+    }
+
+    .date-group {
+        grid-template-columns: 1fr;
+    }
+
+    .total-box {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .rental-details {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .rental-actions {
+        width: 100%;
+
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-stat strong {
+        font-size: 19px;
+    }
+
+    .home-hero h1 {
+        font-size: 42px;
+
+        letter-spacing: -2.5px;
+    }
+
+    .home-hero h1 em {
+        letter-spacing: -2.5px;
+    }
+
+    .home-stat strong {
+        font-size: 19px;
+    }
+}
