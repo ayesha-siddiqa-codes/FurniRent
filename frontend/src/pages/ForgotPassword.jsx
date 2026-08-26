@@ -1,6 +1,7 @@
+```jsx
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../services/api";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -16,13 +17,15 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/forgot-password",
+      const response = await api.post(
+        "/auth/forgot-password",
         { email }
       );
 
       setMessage(response.data.message);
 
+      // Development only:
+      // The backend may return the reset token.
       if (response.data.resetToken) {
         console.log("Reset Token:", response.data.resetToken);
       }
@@ -70,7 +73,10 @@ function ForgotPassword() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="password-form">
+        <form
+          onSubmit={handleSubmit}
+          className="password-form"
+        >
 
           <label htmlFor="email">
             Email Address
@@ -111,3 +117,4 @@ function ForgotPassword() {
 }
 
 export default ForgotPassword;
+```
