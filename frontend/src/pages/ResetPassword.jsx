@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ResetPassword() {
   const { token } = useParams();
@@ -10,6 +11,7 @@ function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,8 @@ function ResetPassword() {
       return;
     }
 
+    setLoading(true);
+
     try {
       const response = await axios.post(
         `http://localhost:5000/api/v1/auth/reset-password/${token}`,
@@ -43,42 +47,99 @@ function ResetPassword() {
         error.response?.data?.message ||
           "Unable to reset password."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="auth-page">
-      <h2>Reset Password</h2>
+    <main className="password-page">
 
-      <p>Enter your new password below.</p>
+      <div className="password-card">
 
-      {message && <p>{message}</p>}
-      {error && <p>{error}</p>}
+        <div className="password-icon">
+          🔑
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="password"
-          placeholder="New password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="new-password"
-          required
-        />
+        <p className="password-label">
+          ACCOUNT SECURITY
+        </p>
 
-        <input
-          type="password"
-          placeholder="Confirm new password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          autoComplete="new-password"
-          required
-        />
-
-        <button type="submit">
+        <h1>
           Reset Password
-        </button>
-      </form>
-    </div>
+        </h1>
+
+        <p className="password-description">
+          Create a new password for your FurniRent account.
+        </p>
+
+        {message && (
+          <div className="password-message success-message">
+            {message}
+          </div>
+        )}
+
+        {error && (
+          <div className="password-message error-message">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="password-form">
+
+          <label htmlFor="password">
+            New Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter new password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            required
+          />
+
+          <label htmlFor="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm your new password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
+            required
+          />
+
+          <p className="password-hint">
+            Password must contain at least 8 characters.
+          </p>
+
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Resetting..."
+              : "Reset Password"}
+          </button>
+
+        </form>
+
+        <Link
+          to="/login"
+          className="back-to-login"
+        >
+          ← Back to Login
+        </Link>
+
+      </div>
+
+    </main>
   );
 }
 

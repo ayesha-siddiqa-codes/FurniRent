@@ -2584,3 +2584,264 @@ td {
     font-size: 32px;
   }
 }
+
+/* =========================================================
+   PASSWORD RECOVERY PAGES
+   ========================================================= */
+
+.password-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px;
+  background:
+    linear-gradient(
+      rgba(245, 242, 237, 0.92),
+      rgba(245, 242, 237, 0.96)
+    );
+}
+
+
+/* ================= CARD ================= */
+
+.password-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 48px 45px;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+  text-align: center;
+}
+
+
+/* ================= ICON ================= */
+
+.password-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f2eee8;
+  border-radius: 50%;
+
+  font-size: 28px;
+}
+
+
+/* ================= LABEL ================= */
+
+.password-label {
+  margin: 0 0 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #8a7359;
+}
+
+
+/* ================= HEADING ================= */
+
+.password-card h1 {
+  margin: 0 0 14px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 1.15;
+
+  color: #292522;
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.password-description {
+  margin: 0 auto 30px;
+
+  max-width: 390px;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #77716b;
+}
+
+
+/* ================= FORM ================= */
+
+.password-form {
+  text-align: left;
+}
+
+
+.password-form label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #3c3732;
+}
+
+
+.password-form input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 14px 16px;
+  margin-bottom: 20px;
+
+  border: 1px solid #d9d2ca;
+  border-radius: 8px;
+
+  background: #faf9f7;
+
+  font-size: 15px;
+  color: #292522;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.password-form input:focus {
+  border-color: #8a7359;
+
+  box-shadow:
+    0 0 0 3px rgba(138, 115, 89, 0.12);
+
+  background: #ffffff;
+}
+
+
+.password-form input::placeholder {
+  color: #aaa39c;
+}
+
+
+/* ================= BUTTON ================= */
+
+.password-form button {
+  width: 100%;
+
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #292522;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.password-form button:hover {
+  background: #8a7359;
+  transform: translateY(-1px);
+}
+
+
+.password-form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ================= PASSWORD HINT ================= */
+
+.password-hint {
+  margin: -8px 0 20px;
+
+  font-size: 12px;
+  color: #8a837c;
+}
+
+
+/* ================= MESSAGES ================= */
+
+.password-message {
+  margin-bottom: 22px;
+  padding: 12px 14px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+.success-message {
+  background: #edf7ef;
+  color: #28643a;
+  border: 1px solid #cce8d2;
+}
+
+
+.error-message {
+  background: #fff0ef;
+  color: #a13d36;
+  border: 1px solid #f1cdca;
+}
+
+
+/* ================= BACK LINK ================= */
+
+.back-to-login {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  color: #6f5c48;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+
+.back-to-login:hover {
+  color: #292522;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .password-page {
+    padding: 40px 16px;
+  }
+
+  .password-card {
+    padding: 38px 25px;
+  }
+
+  .password-card h1 {
+    font-size: 31px;
+  }
+
+}

@@ -7,10 +7,10 @@ import sofa from "../assets/sofa.jpg";
 import studyTable from "../assets/study-table.jpg";
 
 const furnitureImages = {
-  "Dining Table": diningTable,
-  "King Bed": kingBed,
+  "Modern Sofa": sofa,
+  "Elegant Dining Table": diningTable,
   "Office Chair": officeChair,
-  Sofa: sofa,
+  "King Bed": kingBed,
   "Study Table": studyTable,
 };
 

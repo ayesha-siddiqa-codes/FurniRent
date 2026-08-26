@@ -1,16 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setMessage("");
     setError("");
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -20,8 +23,6 @@ function ForgotPassword() {
 
       setMessage(response.data.message);
 
-      // Development only:
-      // The backend currently returns the reset token.
       if (response.data.resetToken) {
         console.log("Reset Token:", response.data.resetToken);
       }
@@ -30,35 +31,82 @@ function ForgotPassword() {
         error.response?.data?.message ||
           "Unable to process your request."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="auth-page">
-      <h2>Forgot Password?</h2>
+    <main className="password-page">
 
-      <p>
-        Enter your registered email address to reset your password.
-      </p>
+      <div className="password-card">
 
-      {message && <p>{message}</p>}
-      {error && <p>{error}</p>}
+        <div className="password-icon">
+          🔐
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-          required
-        />
+        <p className="password-label">
+          ACCOUNT RECOVERY
+        </p>
 
-        <button type="submit">
-          Send Reset Request
-        </button>
-      </form>
-    </div>
+        <h1>
+          Forgot Password?
+        </h1>
+
+        <p className="password-description">
+          No worries. Enter your registered email address
+          and we'll help you reset your password.
+        </p>
+
+        {message && (
+          <div className="password-message success-message">
+            {message}
+          </div>
+        )}
+
+        {error && (
+          <div className="password-message error-message">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="password-form">
+
+          <label htmlFor="email">
+            Email Address
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your registered email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            required
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Sending..."
+              : "Send Reset Link"}
+          </button>
+
+        </form>
+
+        <Link
+          to="/login"
+          className="back-to-login"
+        >
+          ← Back to Login
+        </Link>
+
+      </div>
+
+    </main>
   );
 }
 
